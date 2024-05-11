@@ -1,0 +1,21 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: ID!
+  name: String!
+  apellidos: String!
+  nacimiento: String!
+  email: String!
+  password: String!
+  rol: String!
+  cuentaActiva: Boolean!
+}
+
+type Query {
+  user(email: String!): User!
+
+  """Retorna HelloMundo"""
+  mensaje: String!
+}
