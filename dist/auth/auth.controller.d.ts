@@ -5,13 +5,7 @@ import { ForgorPassDto } from "./dto/forgotpass.dto";
 export declare class AuthController {
     private readonly authService;
     constructor(authService: AuthService);
-    register(registerDto: RegisterDto): Promise<{
-        message: string;
-    }>;
-    login(loginDto: LoginDto): Promise<{
-        tocken: string;
-    }>;
-    forgotpass(forgotDto: ForgorPassDto): Promise<{
-        message: string;
-    }>;
+    register(registerDto: RegisterDto): Promise<import("src/auth/entity/auth.response").AuthResponse>;
+    login(loginDto: LoginDto): Promise<import("src/auth/entity/auth.response").AuthResponse>;
+    forgotpass(forgotDto: ForgorPassDto): Promise<import("src/auth/entity/auth.response").AuthResponse>;
 }

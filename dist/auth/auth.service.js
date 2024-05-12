@@ -21,43 +21,42 @@ let AuthService = class AuthService {
         this.usersService = usersService;
         this.jwtService = jwtService;
     }
-    async register({ password, email, name, apellidos, nacimiento }) {
+    async register({ password, email, name, apellidos }) {
         const user = await this.usersService.findOneByEmail(email);
         if (user) {
-            throw new common_1.BadRequestException("Email already exists");
+            throw new common_1.BadRequestException("El Email ya existe!");
         }
         const hashedPassword = await bcryptjs.hash(password, 10);
         await this.usersService.create({
             name,
             apellidos,
-            nacimiento,
             email,
             password: hashedPassword,
             cuentaActiva: true
         });
         return {
-            message: "User created successfully",
+            message: "Usuario creado con exito",
         };
     }
     async login({ email, password }) {
         const user = await this.usersService.findOneByEmail(email);
         if (!user) {
-            throw new common_1.UnauthorizedException("Invalid email");
+            throw new common_1.UnauthorizedException("Email no valido");
         }
         const isPasswordValid = await bcryptjs.compare(password, user.password);
         if (!isPasswordValid) {
-            throw new common_1.UnauthorizedException("Invalid password");
+            throw new common_1.UnauthorizedException("Constraseña no valida");
         }
-        const payload = { email: user.email };
-        const tocken = await this.jwtService.signAsync(payload);
+        const payload = { email: user.email, id: user.id, name: user.name };
+        const token = await this.jwtService.signAsync(payload);
         return {
-            tocken
+            token
         };
     }
     async forgotpass({ email }) {
         const user = await this.usersService.findOneByEmail(email);
         if (!user) {
-            throw new common_1.UnauthorizedException("Invalid email");
+            throw new common_1.UnauthorizedException("Email no valido");
         }
         const newPass = (0, crypto_1.randomBytes)(8).toString('hex');
         const hashedNewPass = await bcryptjs.hash(newPass, 10);
@@ -80,7 +79,25 @@ let AuthService = class AuthService {
             to: email,
             subject: 'Tu nueva contraseña',
             text: `Tu nueva contraseña es: ${newPassword}`,
-            html: `<b>Tu nueva contraseña es:</b> ${newPassword}`
+            html: `
+                <html>
+                    <body>
+                        <div style="font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; color: #333;">
+                            <h2>Hola,</h2>
+                            <p>Hemos restablecido tu contraseña. Aquí tienes tu nueva contraseña para acceder a <strong>MarcApp</strong>:</p>
+                            <p style="font-size: 18px; color: #555;">
+                                <strong>Contraseña:</strong> <span style="background-color: #f0f0f0; padding: 8px 12px; border-radius: 4px; font-weight: bold;">${newPassword}</span>
+                            </p>
+                            <p>Te recomendamos cambiar esta contraseña por una propia tan pronto como inicies sesión.</p>
+                            <p>Si no has solicitado un restablecimiento de contraseña, por favor ignora este correo o ponte en contacto con nosotros.</p>
+                            <footer>
+                                <p>Saludos cordiales,</p>
+                                <p>Equipo de <strong>MarcApp</strong></p>
+                            </footer>
+                        </div>
+                    </body>
+                </html>
+            `
         };
         await transporter.sendMail(mailOptions);
     }

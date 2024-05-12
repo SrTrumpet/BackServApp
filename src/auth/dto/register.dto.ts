@@ -1,25 +1,27 @@
+import { ArgsType, Field } from "@nestjs/graphql";
 import { Transform } from "class-transformer";
 import { IsEmail, IsString, MinLength, IsDate} from "class-validator";
 
+@ArgsType()
 export class RegisterDto{
 
+    @Field()
     @Transform(({value}) => value.trim())
     @IsString()
     @MinLength(1)
     name: string;
 
+    @Field()
     @Transform(({value}) => value.trim())
     @IsString()
     @MinLength(1)
     apellidos: string;
 
-    @Transform(({ value }) => new Date(value), { toClassOnly: true })
-    @IsDate() 
-    nacimiento: string;
-
+    @Field()
     @IsEmail()
     email : string; 
 
+    @Field()
     @Transform(({value}) => value.trim())
     @IsString()
     @MinLength(6)

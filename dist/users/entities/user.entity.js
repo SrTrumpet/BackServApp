@@ -32,11 +32,6 @@ __decorate([
 ], User.prototype, "apellidos", void 0);
 __decorate([
     (0, graphql_1.Field)(),
-    (0, typeorm_1.Column)({ length: 40 }),
-    __metadata("design:type", String)
-], User.prototype, "nacimiento", void 0);
-__decorate([
-    (0, graphql_1.Field)(),
     (0, typeorm_1.Column)({ unique: true, nullable: false }),
     __metadata("design:type", String)
 ], User.prototype, "email", void 0);

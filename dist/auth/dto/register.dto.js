@@ -10,36 +10,39 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RegisterDto = void 0;
+const graphql_1 = require("@nestjs/graphql");
 const class_transformer_1 = require("class-transformer");
 const class_validator_1 = require("class-validator");
-class RegisterDto {
-}
+let RegisterDto = class RegisterDto {
+};
 exports.RegisterDto = RegisterDto;
 __decorate([
+    (0, graphql_1.Field)(),
     (0, class_transformer_1.Transform)(({ value }) => value.trim()),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.MinLength)(1),
     __metadata("design:type", String)
 ], RegisterDto.prototype, "name", void 0);
 __decorate([
+    (0, graphql_1.Field)(),
     (0, class_transformer_1.Transform)(({ value }) => value.trim()),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.MinLength)(1),
     __metadata("design:type", String)
 ], RegisterDto.prototype, "apellidos", void 0);
 __decorate([
-    (0, class_transformer_1.Transform)(({ value }) => new Date(value), { toClassOnly: true }),
-    (0, class_validator_1.IsDate)(),
-    __metadata("design:type", String)
-], RegisterDto.prototype, "nacimiento", void 0);
-__decorate([
+    (0, graphql_1.Field)(),
     (0, class_validator_1.IsEmail)(),
     __metadata("design:type", String)
 ], RegisterDto.prototype, "email", void 0);
 __decorate([
+    (0, graphql_1.Field)(),
     (0, class_transformer_1.Transform)(({ value }) => value.trim()),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.MinLength)(6),
     __metadata("design:type", String)
 ], RegisterDto.prototype, "password", void 0);
+exports.RegisterDto = RegisterDto = __decorate([
+    (0, graphql_1.ArgsType)()
+], RegisterDto);
 //# sourceMappingURL=register.dto.js.map

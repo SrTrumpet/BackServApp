@@ -17,10 +17,6 @@ export class User {
     apellidos: string;
 
   @Field() // GraphQL: Exponer este campo
-    @Column({ length: 40 })
-    nacimiento: string;
-
-  @Field() // GraphQL: Exponer este campo
     @Column({ unique: true, nullable: false })
     email: string;
 

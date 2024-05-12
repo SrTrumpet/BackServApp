@@ -10,12 +10,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ForgorPassDto = void 0;
+const graphql_1 = require("@nestjs/graphql");
 const class_validator_1 = require("class-validator");
-class ForgorPassDto {
-}
+let ForgorPassDto = class ForgorPassDto {
+};
 exports.ForgorPassDto = ForgorPassDto;
 __decorate([
+    (0, graphql_1.Field)(),
     (0, class_validator_1.IsEmail)(),
     __metadata("design:type", String)
 ], ForgorPassDto.prototype, "email", void 0);
+exports.ForgorPassDto = ForgorPassDto = __decorate([
+    (0, graphql_1.ArgsType)()
+], ForgorPassDto);
 //# sourceMappingURL=forgotpass.dto.js.map

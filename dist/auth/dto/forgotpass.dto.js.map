@@ -1,1 +1,1 @@
-{"version":3,"file":"forgotpass.dto.js","sourceRoot":"","sources":["../../../src/auth/dto/forgotpass.dto.ts"],"names":[],"mappings":";;;;;;;;;;;;AAAA,qDAAyC;AAEzC,MAAa,aAAa;CAKzB;AALD,sCAKC;AAFG;IADC,IAAA,yBAAO,GAAE;;4CACI"}
+{"version":3,"file":"forgotpass.dto.js","sourceRoot":"","sources":["../../../src/auth/dto/forgotpass.dto.ts"],"names":[],"mappings":";;;;;;;;;;;;AAAA,6CAAkD;AAClD,qDAAyC;AAGlC,IAAM,aAAa,GAAnB,MAAM,aAAa;CAMzB,CAAA;AANY,sCAAa;AAItB;IAFC,IAAA,eAAK,GAAE;IACP,IAAA,yBAAO,GAAE;;4CACI;wBAJL,aAAa;IADzB,IAAA,kBAAQ,GAAE;GACE,aAAa,CAMzB"}
