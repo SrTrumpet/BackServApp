@@ -1,6 +1,6 @@
 import { ArgsType, Field } from "@nestjs/graphql";
 import { Transform } from "class-transformer";
-import { IsEmail, IsString, MinLength, IsDate} from "class-validator";
+import { IsEmail, IsString, MinLength} from "class-validator";
 
 @ArgsType()
 export class RegisterDto{

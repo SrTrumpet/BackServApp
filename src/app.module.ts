@@ -24,6 +24,7 @@ import {ApolloDriver, ApolloDriverConfig} from '@nestjs/apollo';
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'schema.gpl'),
       playground: true,
+      path: '/graphql',
     }),
   ],
   

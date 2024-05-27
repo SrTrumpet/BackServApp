@@ -123,11 +123,6 @@ import { AuthResponse } from "./entity/auth.response";
                 </html>
             `
         };
-    
         await transporter.sendMail(mailOptions);
-
-        
     }
-
-
 }

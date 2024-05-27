@@ -8,7 +8,7 @@ async function bootstrap() {
   app.setGlobalPrefix("api/v1");
 
   app.enableCors({
-    origin: "http://localhost:5173", // Permite solo solicitudes CORS de este origen
+    origin: "*", // Permite solo solicitudes CORS de este origen
     methods: "GET,POST,PUT,DELETE", // Métodos HTTP permitidos
     allowedHeaders: "Content-Type, Authorization", // Encabezados permitidos
   });

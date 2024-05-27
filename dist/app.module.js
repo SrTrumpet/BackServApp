@@ -36,6 +36,7 @@ exports.AppModule = AppModule = __decorate([
                 driver: apollo_1.ApolloDriver,
                 autoSchemaFile: (0, path_1.join)(process.cwd(), 'schema.gpl'),
                 playground: true,
+                path: '/graphql',
             }),
         ],
         controllers: [],

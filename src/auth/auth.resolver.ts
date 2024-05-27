@@ -30,3 +30,6 @@ export class AuthResolver{
         return this.authService.login(logindDto);
     }
 }
+
+//guardarlo en una cockie
+//
