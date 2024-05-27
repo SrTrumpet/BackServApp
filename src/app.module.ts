@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { GraphQLModule } from '@nestjs/graphql';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
+import { ServicioModule } from './servicio/servicio.module';
 import { join } from 'path';
 import {ApolloDriver, ApolloDriverConfig} from '@nestjs/apollo';
 
@@ -10,6 +11,7 @@ import {ApolloDriver, ApolloDriverConfig} from '@nestjs/apollo';
   imports: [
     UsersModule,
     AuthModule,
+    ServicioModule,
     TypeOrmModule.forRoot({
       type: "mysql",
       host: "localhost",

@@ -8,7 +8,7 @@ export class Servicio {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Field(() => ID)
+    @Field()
     @Column()
     idUser: number;
 

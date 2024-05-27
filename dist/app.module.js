@@ -12,6 +12,7 @@ const typeorm_1 = require("@nestjs/typeorm");
 const graphql_1 = require("@nestjs/graphql");
 const users_module_1 = require("./users/users.module");
 const auth_module_1 = require("./auth/auth.module");
+const servicio_module_1 = require("./servicio/servicio.module");
 const path_1 = require("path");
 const apollo_1 = require("@nestjs/apollo");
 let AppModule = class AppModule {
@@ -22,6 +23,7 @@ exports.AppModule = AppModule = __decorate([
         imports: [
             users_module_1.UsersModule,
             auth_module_1.AuthModule,
+            servicio_module_1.ServicioModule,
             typeorm_1.TypeOrmModule.forRoot({
                 type: "mysql",
                 host: "localhost",

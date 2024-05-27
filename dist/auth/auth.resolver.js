@@ -16,9 +16,9 @@ exports.AuthResolver = void 0;
 const graphql_1 = require("@nestjs/graphql");
 const register_dto_1 = require("./dto/register.dto");
 const auth_response_1 = require("./entity/auth.response");
-const auth_service_1 = require("./auth.service");
 const forgotpass_dto_1 = require("./dto/forgotpass.dto");
 const login_dto_1 = require("./dto/login.dto");
+const auth_service_1 = require("./auth.service");
 let AuthResolver = class AuthResolver {
     constructor(authService) {
         this.authService = authService;
@@ -31,6 +31,9 @@ let AuthResolver = class AuthResolver {
     }
     async login(logindDto) {
         return this.authService.login(logindDto);
+    }
+    dummyQuery() {
+        return "This query does nothing.";
     }
 };
 exports.AuthResolver = AuthResolver;
@@ -55,6 +58,12 @@ __decorate([
     __metadata("design:paramtypes", [login_dto_1.LoginDto]),
     __metadata("design:returntype", Promise)
 ], AuthResolver.prototype, "login", null);
+__decorate([
+    (0, graphql_1.Query)(() => String),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", String)
+], AuthResolver.prototype, "dummyQuery", null);
 exports.AuthResolver = AuthResolver = __decorate([
     (0, graphql_1.Resolver)(),
     __metadata("design:paramtypes", [auth_service_1.AuthService])

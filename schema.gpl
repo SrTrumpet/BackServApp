@@ -2,30 +2,22 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type User {
-  id: ID!
-  name: String!
-  apellidos: String!
-  email: String!
-  password: String!
-  rol: String!
-  cuentaActiva: Boolean!
-}
-
 type AuthResponse {
   message: String!
   token: String!
 }
 
-type Query {
-  user(email: String!): User!
+type ServicioResponse {
+  message: String!
+}
 
-  """Retorna HelloMundo"""
-  mensaje: String!
+type Query {
+  dummyQuery: String!
 }
 
 type Mutation {
   register(name: String!, apellidos: String!, email: String!, password: String!): AuthResponse!
   forgotPass(email: String!): AuthResponse!
   login(email: String!, password: String!): AuthResponse!
+  publicarServicio(ocupacion: String!, categoria: String!, descripcion: String!): ServicioResponse!
 }

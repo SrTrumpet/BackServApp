@@ -5,7 +5,6 @@ const app_module_1 = require("./app.module");
 const pipes_1 = require("@nestjs/common/pipes");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
-    app.setGlobalPrefix("api/v1");
     app.enableCors({
         origin: "*",
         methods: "GET,POST,PUT,DELETE",

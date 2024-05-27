@@ -12,6 +12,7 @@ const servicio_entity_1 = require("./entity/servicio.entity");
 const common_1 = require("@nestjs/common");
 const servicio_controller_1 = require("./servicio.controller");
 const servicio_service_1 = require("./servicio.service");
+const servicio_resolver_1 = require("./servicio.resolver");
 let ServicioModule = class ServicioModule {
 };
 exports.ServicioModule = ServicioModule;
@@ -19,7 +20,7 @@ exports.ServicioModule = ServicioModule = __decorate([
     (0, common_1.Module)({
         imports: [typeorm_1.TypeOrmModule.forFeature([servicio_entity_1.Servicio])],
         controllers: [servicio_controller_1.ServicioController],
-        providers: [servicio_service_1.ServicioService,],
+        providers: [servicio_service_1.ServicioService, servicio_resolver_1.ServicioResolver],
         exports: [],
     })
 ], ServicioModule);

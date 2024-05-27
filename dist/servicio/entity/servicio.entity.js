@@ -21,7 +21,7 @@ __decorate([
     __metadata("design:type", Number)
 ], Servicio.prototype, "id", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_1.ID),
+    (0, graphql_1.Field)(),
     (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
 ], Servicio.prototype, "idUser", void 0);

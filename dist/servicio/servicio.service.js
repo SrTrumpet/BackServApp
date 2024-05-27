@@ -18,11 +18,26 @@ const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
 const servicio_entity_1 = require("./entity/servicio.entity");
 let ServicioService = class ServicioService {
-    constructor(servicioRespository) {
-        this.servicioRespository = servicioRespository;
+    constructor(servicioRepository) {
+        this.servicioRepository = servicioRepository;
     }
-    async create(createServicioDto) {
-        return await this.servicioRespository.save(createServicioDto);
+    async publicarServicio(createServicioDto, iduser) {
+        await this.create({
+            idUser: iduser,
+            ...createServicioDto,
+            activo: true,
+            click: 0,
+            calificacion: 0.0
+        });
+        return {
+            message: "Servicio publicado",
+        };
+    }
+    async findById(id) {
+        return await this.servicioRepository.findOneBy({ id });
+    }
+    async create(createServiceDto) {
+        return await this.servicioRepository.save(createServiceDto);
     }
 };
 exports.ServicioService = ServicioService;

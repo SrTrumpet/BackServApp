@@ -9,11 +9,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AuthGuard = void 0;
+exports.Guard = void 0;
 const common_1 = require("@nestjs/common");
 const jwt_1 = require("@nestjs/jwt");
-const jwt_constants_1 = require("./constants/jwt.constants");
-let AuthGuard = class AuthGuard {
+const jwt_constants_1 = require("../auth/constants/jwt.constants");
+let Guard = class Guard {
     constructor(jwtService) {
         this.jwtService = jwtService;
     }
@@ -21,28 +21,34 @@ let AuthGuard = class AuthGuard {
         const request = context.switchToHttp().getRequest();
         const token = this.extractTokenFromHeader(request);
         if (!token) {
-            throw new common_1.UnauthorizedException();
+            throw new common_1.UnauthorizedException("No token found");
         }
         try {
             const payload = await this.jwtService.verifyAsync(token, {
-                secret: jwt_constants_1.jwtConstants.secret
+                secret: jwt_constants_1.jwtConstants.secret,
             });
-            request['user'] = payload;
+            request.user = payload;
         }
-        catch {
-            throw new common_1.UnauthorizedException();
+        catch (error) {
+            throw new common_1.UnauthorizedException("Token is invalid or expired");
         }
         return true;
     }
     extractTokenFromHeader(request) {
-        const headers = request.headers;
-        const [type, token] = headers.authorization?.split(' ') ?? [];
-        return type === 'Bearer' ? token : undefined;
+        const authHeader = request.headers['authorization'];
+        if (!authHeader) {
+            return undefined;
+        }
+        const [type, token] = authHeader.split(' ');
+        if (type !== 'Bearer' || !token) {
+            return undefined;
+        }
+        return token;
     }
 };
-exports.AuthGuard = AuthGuard;
-exports.AuthGuard = AuthGuard = __decorate([
+exports.Guard = Guard;
+exports.Guard = Guard = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [jwt_1.JwtService])
-], AuthGuard);
-//# sourceMappingURL=auth.guard.js.map
+], Guard);
+//# sourceMappingURL=guard.js.map
