@@ -9,33 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateServicioDto = void 0;
+exports.ServicioResponseList = void 0;
 const graphql_1 = require("@nestjs/graphql");
-const class_validator_1 = require("class-validator");
-let CreateServicioDto = class CreateServicioDto {
+let ServicioResponseList = class ServicioResponseList {
 };
-exports.CreateServicioDto = CreateServicioDto;
+exports.ServicioResponseList = ServicioResponseList;
 __decorate([
     (0, graphql_1.Field)(),
-    (0, class_validator_1.IsString)(),
-    __metadata("design:type", String)
-], CreateServicioDto.prototype, "ocupacion", void 0);
+    __metadata("design:type", Number)
+], ServicioResponseList.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(),
-    (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
-], CreateServicioDto.prototype, "categoria", void 0);
+], ServicioResponseList.prototype, "ocupacion", void 0);
 __decorate([
     (0, graphql_1.Field)(),
-    (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
-], CreateServicioDto.prototype, "descripcion", void 0);
-__decorate([
-    (0, graphql_1.Field)(),
-    (0, class_validator_1.IsString)(),
-    __metadata("design:type", String)
-], CreateServicioDto.prototype, "direccion", void 0);
-exports.CreateServicioDto = CreateServicioDto = __decorate([
-    (0, graphql_1.ArgsType)()
-], CreateServicioDto);
-//# sourceMappingURL=create-servicio.dto.js.map
+], ServicioResponseList.prototype, "categoria", void 0);
+exports.ServicioResponseList = ServicioResponseList = __decorate([
+    (0, graphql_1.ObjectType)()
+], ServicioResponseList);
+//# sourceMappingURL=service-list-response.js.map

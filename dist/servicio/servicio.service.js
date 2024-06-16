@@ -17,17 +17,22 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
 const servicio_entity_1 = require("./entity/servicio.entity");
+const jwt = require("jsonwebtoken");
+const jwt_constants_1 = require("../auth/constants/jwt.constants");
 let ServicioService = class ServicioService {
     constructor(servicioRepository) {
         this.servicioRepository = servicioRepository;
     }
-    async publicarServicio(createServicioDto, iduser) {
+    async publicarServicio(createServicioDto, token) {
+        let datosUsuario;
+        datosUsuario = jwt.verify(token, jwt_constants_1.jwtConstants.secret);
         await this.create({
-            idUser: iduser,
+            idUser: datosUsuario.id,
+            nombreUsuario: datosUsuario.name,
             ...createServicioDto,
             activo: true,
             click: 0,
-            calificacion: 0.0
+            calificacion: 0.0,
         });
         return {
             message: "Servicio publicado",

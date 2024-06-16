@@ -11,13 +11,20 @@ type ServicioResponse {
   message: String!
 }
 
+type ServicioResponseList {
+  id: Float!
+  ocupacion: String!
+  categoria: String!
+}
+
 type Query {
   dummyQuery: String!
+  getAllService: [ServicioResponseList!]!
 }
 
 type Mutation {
   register(name: String!, apellidos: String!, email: String!, password: String!): AuthResponse!
   forgotPass(email: String!): AuthResponse!
   login(email: String!, password: String!): AuthResponse!
-  publicarServicio(ocupacion: String!, categoria: String!, descripcion: String!): ServicioResponse!
+  publicarServicio(ocupacion: String!, categoria: String!, descripcion: String!, direccion: String!): ServicioResponse!
 }

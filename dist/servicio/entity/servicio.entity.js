@@ -26,6 +26,10 @@ __decorate([
     __metadata("design:type", Number)
 ], Servicio.prototype, "idUser", void 0);
 __decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Servicio.prototype, "nombreUsuario", void 0);
+__decorate([
     (0, graphql_1.Field)(),
     (0, typeorm_1.Column)({ length: 500 }),
     __metadata("design:type", String)
@@ -55,6 +59,10 @@ __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Servicio.prototype, "descripcion", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Servicio.prototype, "direccion", void 0);
 exports.Servicio = Servicio = __decorate([
     (0, graphql_1.ObjectType)(),
     (0, typeorm_1.Entity)()

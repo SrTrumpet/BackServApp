@@ -12,6 +12,9 @@ export class Servicio {
     @Column()
     idUser: number;
 
+    @Column()
+    nombreUsuario:string;
+
     @Field() // GraphQL: Exponer este campo
     @Column({ length: 500 })
     ocupacion: string;
@@ -35,4 +38,7 @@ export class Servicio {
     @Field() // GraphQL: Usar Boolean para este campo
     @Column()
     descripcion: string;
+
+    @Column()
+    direccion: string;
 }

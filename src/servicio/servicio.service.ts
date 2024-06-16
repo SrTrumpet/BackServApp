@@ -6,6 +6,9 @@ import { Servicio } from "./entity/servicio.entity";
 import { CreateServicioDto } from "./dto/create-servicio.dto";
 import { ServicioResponse } from "./entity/servicio.response";
 
+import * as jwt from 'jsonwebtoken';
+import { jwtConstants } from "../auth/constants/jwt.constants";
+
 @Injectable()
 export class ServicioService {
     constructor(
@@ -13,14 +16,18 @@ export class ServicioService {
         private readonly servicioRepository: Repository<Servicio>
     ) {}
 
-    async publicarServicio(createServicioDto: CreateServicioDto, iduser): Promise<ServicioResponse> {
+    async publicarServicio(createServicioDto: CreateServicioDto, token): Promise<ServicioResponse> {
+        
+        let datosUsuario: any;
+        datosUsuario = jwt.verify(token, jwtConstants.secret );
 
         await this.create({
-            idUser: iduser,
+            idUser: datosUsuario.id,
+            nombreUsuario:datosUsuario.name,
             ...createServicioDto,
             activo: true,
             click: 0,
-            calificacion: 0.0
+            calificacion: 0.0,
         });
 
         return {

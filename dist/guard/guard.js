@@ -12,13 +12,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Guard = void 0;
 const common_1 = require("@nestjs/common");
 const jwt_1 = require("@nestjs/jwt");
+const graphql_1 = require("@nestjs/graphql");
 const jwt_constants_1 = require("../auth/constants/jwt.constants");
 let Guard = class Guard {
     constructor(jwtService) {
         this.jwtService = jwtService;
     }
     async canActivate(context) {
-        const request = context.switchToHttp().getRequest();
+        const ctx = graphql_1.GqlExecutionContext.create(context);
+        const request = ctx.getContext().req;
         const token = this.extractTokenFromHeader(request);
         if (!token) {
             throw new common_1.UnauthorizedException("No token found");

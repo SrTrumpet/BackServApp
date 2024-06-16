@@ -13,7 +13,7 @@ import { ServicioResolver } from "src/servicio/servicio.resolver";
       global: true,
       secret: jwtConstants.secret,
       signOptions:{
-        expiresIn:'120s'
+        expiresIn:'800s'
       },
     }),
   ],

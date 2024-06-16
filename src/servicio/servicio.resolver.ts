@@ -10,7 +10,7 @@ import { ServicioResponse } from './entity/servicio.response';
 
 // Importa el servicio
 import { ServicioService } from './servicio.service';
-
+import { ServicioResponseList } from './entity/service-list-response';
 
 @Resolver()
 export class ServicioResolver{
@@ -19,7 +19,30 @@ export class ServicioResolver{
 
     @Mutation(returns => ServicioResponse)
     @UseGuards(Guard)
-    async publicarServicio(@Args() createServicioDto: CreateServicioDto, @Context() ctx): Promise<ServicioResponse>{
-        return await this.servicio.publicarServicio(createServicioDto,ctx.req.user.userId);
+    async publicarServicio(@Args() createServicioDto: CreateServicioDto, @Context() context:any): Promise<ServicioResponse>{
+        const req = context.req;
+        console.log(this.extractTokenFromHeader(req));
+        return await this.servicio.publicarServicio(createServicioDto,this.extractTokenFromHeader(req));
     }
+
+    @Query(() => [ServicioResponseList])
+    @UseGuards(Guard)
+    async getAllService(){
+        
+    }
+
+
+
+    private extractTokenFromHeader(request: any): string | undefined {
+        const authHeader = request.headers['authorization'];
+        if (!authHeader) {
+            return undefined;
+        }
+        const [type, token] = authHeader.split(' ');
+        if (type !== 'Bearer' || !token) {
+            return undefined;
+        }
+        return token;
+    }
+
 }

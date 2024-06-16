@@ -6,6 +6,9 @@ export class CreateServicioDto{
 
     idUser: number;
 
+
+    nombreUsuario:string;
+
     @Field()
     @IsString()
     ocupacion: string;
@@ -21,4 +24,8 @@ export class CreateServicioDto{
     @Field()
     @IsString()
     descripcion:string;
+
+    @Field()
+    @IsString()
+    direccion:string
 }

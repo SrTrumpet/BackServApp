@@ -5,7 +5,7 @@ import { ServicioResponse } from "./entity/servicio.response";
 export declare class ServicioService {
     private readonly servicioRepository;
     constructor(servicioRepository: Repository<Servicio>);
-    publicarServicio(createServicioDto: CreateServicioDto, iduser: any): Promise<ServicioResponse>;
+    publicarServicio(createServicioDto: CreateServicioDto, token: any): Promise<ServicioResponse>;
     private findById;
     create(createServiceDto: CreateServicioDto): Promise<CreateServicioDto & Servicio>;
 }
