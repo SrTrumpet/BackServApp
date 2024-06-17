@@ -13,13 +13,19 @@ type ServicioResponse {
 
 type ServicioResponseList {
   id: Float!
+  nombreUsuario: String!
   ocupacion: String!
   categoria: String!
+  descripcion: String!
+  direccion: String!
+  calificacion: Float!
+  click: Float!
 }
 
 type Query {
   dummyQuery: String!
   getAllService: [ServicioResponseList!]!
+  findAllServicesByName(name: String!): [ServicioResponseList!]!
 }
 
 type Mutation {

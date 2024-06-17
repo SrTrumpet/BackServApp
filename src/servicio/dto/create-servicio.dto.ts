@@ -5,8 +5,6 @@ import { IsString } from 'class-validator';
 export class CreateServicioDto{
 
     idUser: number;
-
-
     nombreUsuario:string;
 
     @Field()

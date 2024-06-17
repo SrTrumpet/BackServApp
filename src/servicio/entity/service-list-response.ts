@@ -6,8 +6,23 @@ export class ServicioResponseList {
     id: number;
 
     @Field()
+    nombreUsuario:string;
+
+    @Field()
     ocupacion: string;
 
     @Field()
     categoria: string;
+
+    @Field()
+    descripcion:string;
+
+    @Field()
+    direccion:string;
+
+    @Field()
+    calificacion:number;
+
+    @Field()
+    click:number;
 }

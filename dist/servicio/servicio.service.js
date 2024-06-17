@@ -44,6 +44,17 @@ let ServicioService = class ServicioService {
     async create(createServiceDto) {
         return await this.servicioRepository.save(createServiceDto);
     }
+    async findByName(ocupacion) {
+        return await this.servicioRepository.find({
+            where: { ocupacion },
+            select: ["id", "nombreUsuario", "ocupacion", "categoria", "descripcion", "direccion", "calificacion", "click"]
+        });
+    }
+    async findAllServices() {
+        return await this.servicioRepository.find({
+            select: ["id", "nombreUsuario", "ocupacion", "categoria", "descripcion", "direccion", "calificacion", "click"]
+        });
+    }
 };
 exports.ServicioService = ServicioService;
 exports.ServicioService = ServicioService = __decorate([

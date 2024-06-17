@@ -8,6 +8,7 @@ import { ServicioResponse } from "./entity/servicio.response";
 
 import * as jwt from 'jsonwebtoken';
 import { jwtConstants } from "../auth/constants/jwt.constants";
+import { ServicioResponseList } from "./entity/service-list-response";
 
 @Injectable()
 export class ServicioService {
@@ -41,5 +42,18 @@ export class ServicioService {
 
     async create(createServiceDto: CreateServicioDto) {
         return await this.servicioRepository.save(createServiceDto);
+    }
+
+    async findByName(ocupacion: string): Promise<ServicioResponseList[]| undefined>{
+        return await this.servicioRepository.find({
+            where: {ocupacion},
+            select: ["id","nombreUsuario","ocupacion","categoria","descripcion","direccion","calificacion","click"]
+        });
+    }
+
+    async findAllServices(): Promise<ServicioResponseList[]| undefined>{
+        return await this.servicioRepository.find({
+            select: ["id","nombreUsuario","ocupacion","categoria","descripcion","direccion","calificacion","click"]
+        });
     }
 }

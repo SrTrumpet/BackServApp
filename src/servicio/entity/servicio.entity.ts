@@ -12,6 +12,7 @@ export class Servicio {
     @Column()
     idUser: number;
 
+    @Field()
     @Column()
     nombreUsuario:string;
 
@@ -39,6 +40,7 @@ export class Servicio {
     @Column()
     descripcion: string;
 
+    @Field()
     @Column()
     direccion: string;
 }

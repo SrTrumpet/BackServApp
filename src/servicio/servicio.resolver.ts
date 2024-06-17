@@ -27,10 +27,37 @@ export class ServicioResolver{
 
     @Query(() => [ServicioResponseList])
     @UseGuards(Guard)
-    async getAllService(){
-        
+    async getAllService(): Promise<ServicioResponseList[]>{
+        const datos = await this.servicio.findAllServices();
+        return datos.map(datos => ({
+            id: datos.id,
+            nombreUsuario: datos.nombreUsuario,
+            ocupacion: datos.ocupacion,
+            categoria: datos.categoria,
+            descripcion: datos.descripcion,
+            direccion: datos.direccion,
+            calificacion: datos.calificacion,
+            click: datos.click
+        }));
     }
 
+
+
+    @Query(() => [ServicioResponseList])
+    @UseGuards(Guard)
+    async findAllServicesByName(@Args('name') nameServicio: string): Promise<ServicioResponseList[]>{
+        const datos = await this.servicio.findByName(nameServicio);
+        return datos.map(datos => ({
+            id: datos.id,
+            nombreUsuario: datos.nombreUsuario,
+            ocupacion: datos.ocupacion,
+            categoria: datos.categoria,
+            descripcion: datos.descripcion,
+            direccion: datos.direccion,
+            calificacion: datos.calificacion,
+            click: datos.click
+        }));
+    }
 
 
     private extractTokenFromHeader(request: any): string | undefined {

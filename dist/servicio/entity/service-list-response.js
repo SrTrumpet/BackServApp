@@ -21,11 +21,31 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
+], ServicioResponseList.prototype, "nombreUsuario", void 0);
+__decorate([
+    (0, graphql_1.Field)(),
+    __metadata("design:type", String)
 ], ServicioResponseList.prototype, "ocupacion", void 0);
 __decorate([
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
 ], ServicioResponseList.prototype, "categoria", void 0);
+__decorate([
+    (0, graphql_1.Field)(),
+    __metadata("design:type", String)
+], ServicioResponseList.prototype, "descripcion", void 0);
+__decorate([
+    (0, graphql_1.Field)(),
+    __metadata("design:type", String)
+], ServicioResponseList.prototype, "direccion", void 0);
+__decorate([
+    (0, graphql_1.Field)(),
+    __metadata("design:type", Number)
+], ServicioResponseList.prototype, "calificacion", void 0);
+__decorate([
+    (0, graphql_1.Field)(),
+    __metadata("design:type", Number)
+], ServicioResponseList.prototype, "click", void 0);
 exports.ServicioResponseList = ServicioResponseList = __decorate([
     (0, graphql_1.ObjectType)()
 ], ServicioResponseList);
