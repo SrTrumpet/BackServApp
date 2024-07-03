@@ -15,12 +15,14 @@ const auth_module_1 = require("./auth/auth.module");
 const servicio_module_1 = require("./servicio/servicio.module");
 const path_1 = require("path");
 const apollo_1 = require("@nestjs/apollo");
+const chat_module_1 = require("./chat/chat.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
+            chat_module_1.ChatModule,
             users_module_1.UsersModule,
             auth_module_1.AuthModule,
             servicio_module_1.ServicioModule,

@@ -6,9 +6,11 @@ import { AuthModule } from './auth/auth.module';
 import { ServicioModule } from './servicio/servicio.module';
 import { join } from 'path';
 import {ApolloDriver, ApolloDriverConfig} from '@nestjs/apollo';
+import { ChatModule } from './chat/chat.module';
 
 @Module({
   imports: [
+    ChatModule,
     UsersModule,
     AuthModule,
     ServicioModule,

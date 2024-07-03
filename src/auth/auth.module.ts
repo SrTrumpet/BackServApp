@@ -4,8 +4,8 @@ import { AuthService } from "./auth.service";
 import { JwtModule } from "@nestjs/jwt";
 import { jwtConstants } from "./constants/jwt.constants";
 import { AuthResolver } from "./auth.resolver";
-import { ServicioService } from 'src/servicio/servicio.service';
-import { ServicioResolver } from "src/servicio/servicio.resolver";
+//import { ServicioService } from 'src/servicio/servicio.service';
+//import { ServicioResolver } from "src/servicio/servicio.resolver";
 
 @Module({
   imports: [UsersModule,
